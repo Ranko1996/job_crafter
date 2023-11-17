@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart' as http;
 
+import '../common/jobs_recommendation_slider.dart';
 import '../models/job/job.dart';
 import '../services/poslovi/jobs_rest_service.dart';
 
@@ -86,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 // Tekst s leve strane
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.fromLTRB(13, 13, 13, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -123,7 +124,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -166,113 +167,21 @@ class _DashboardState extends State<Dashboard> {
             const SizedBox(
               height: 10,
             ),
-            Text(
-              'Preporuke za Vas',
-              style: GoogleFonts.poppins(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.normal,
+            Container(
+              padding: EdgeInsets.only(left: 12),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Preporuke za Vas',
+                style: GoogleFonts.poppins(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
 
             // Horizontalni slider sa karticama poslova
-            Container(
-              height: 250,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: jobs.length, // Postavljanje na duljinu liste jobs
-                itemBuilder: (context, index) {
-                  var job = jobs[index];
-                  return Container(
-                    width: 250,
-                    margin: EdgeInsets.all(12),
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Logo poslodavca (slika) ili ikona ako nema slike
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey, width: 1),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: job.employerLogo != null
-                                    ? Image.network(
-                                        job.employerLogo ?? '',
-                                        width: 60,
-                                        height: 60,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Icon(
-                                        Icons.business,
-                                        size: 60,
-                                        color: Colors.grey, // Boja ikone kada nema slike
-                                      ),
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            // Vrsta zaposlenja
-                            Container(
-                              width: 100,
-                              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                job.jobEmploymentType ?? '',
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          job.employerName ?? '',
-                          style: GoogleFonts.poppins(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          job.jobTitle ?? '',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+            JobsRecomendation(jobs: jobs),
           ],
         ),
       ),
