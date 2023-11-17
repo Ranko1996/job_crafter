@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314703959094",
+    "project_id": "jobcrafter-8e2b0",
+    "storage_bucket": "jobcrafter-8e2b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314703959094:android:e09f3fc3deeda7538e7497",
+        "android_client_info": {
+          "package_name": "com.example.job_crafter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_g7m_lFds3LoY77vR_U1y260Cslnf8rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
