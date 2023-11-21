@@ -16,7 +16,7 @@ class JobsRecomendation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 270,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: jobs.length,
@@ -140,7 +140,7 @@ class JobsRecomendation extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            DateFormat('dd.MM.yyyy').format(DateTime.parse(job.jobPostedAtDatetimeUtc ?? "")),
+                            job.jobOfferExpirationDatetimeUtc == null ? "Nije određeno" : DateFormat('dd.MM.yyyy').format(DateTime.parse(job.jobPostedAtDatetimeUtc ?? "")),
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                               fontWeight: FontWeight.normal,
@@ -161,7 +161,7 @@ class JobsRecomendation extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            DateFormat('dd.MM.yyyy').format(DateTime.parse(job.jobOfferExpirationDatetimeUtc ?? "")),
+                            job.jobOfferExpirationDatetimeUtc == null ? "Nije određeno" : DateFormat('dd.MM.yyyy').format(DateTime.parse(job.jobOfferExpirationDatetimeUtc ?? "")),
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                               fontWeight: FontWeight.normal,

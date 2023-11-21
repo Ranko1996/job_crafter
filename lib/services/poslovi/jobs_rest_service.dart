@@ -9,7 +9,7 @@ import '../../models/job/job.dart';
 class JobsRestService {
   final dio = Dio();
 
-  Future<List<Job>> fetchJobs() async {
+  Future<List<Job>> fetchJobs(String query) async {
     List<Job> resultList = [];
     const String apiKey = 'f647a48ac6msh21da85d7774ca16p1b6f27jsnf32cf39f5137';
     const String host = 'jsearch.p.rapidapi.com';
@@ -22,7 +22,8 @@ class JobsRestService {
 
     final Map<String, String> params = {
       // 'query': 'Python developer in Texas, USA',
-      'query': 'Developer in Croatia',
+      // 'query': 'Developer in Croatia',
+      'query': query,
       'page': '1',
       'num_pages': '1',
     };

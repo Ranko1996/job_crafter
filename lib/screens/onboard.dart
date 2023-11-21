@@ -131,14 +131,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextButton(
-              // onPressed: () => controller.jumpToPage(2),
+            // TextButton(
+            //   // onPressed: () => controller.jumpToPage(2),
 
-              onPressed: () => controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),
+            //   onPressed: () => controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut),
 
-              child: const Text("Sljedeća stranica"),
-            ),
-            Center(
+            //   child: const Text("Sljedeća stranica"),
+            // ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(25, 8, 8, 8),
               child: SmoothPageIndicator(
                 controller: controller,
                 count: 2,
